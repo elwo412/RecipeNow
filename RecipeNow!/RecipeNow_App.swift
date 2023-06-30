@@ -11,7 +11,8 @@ import SwiftUI
 struct RecipeNow_App: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            Home()
+                .preferredColorScheme(.light)
         }
     }
 }
