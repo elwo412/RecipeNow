@@ -18,7 +18,6 @@ struct BadgeView: View {
             .fixedSize(horizontal: true, vertical: false)
             .padding(.vertical, 5)
             .padding(.horizontal, 5)
-            .background(Capsule().fill(Color.blue))
             .foregroundColor(.white)
     }
 }

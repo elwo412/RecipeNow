@@ -32,10 +32,12 @@ struct BadgeContainerView: View {
         return HStack {
             ForEach(visibleBadges, id: \.self) { badge in
                 BadgeView(text: badge)
+                    .background(Capsule().fill(Color.gray))
             }
             
             if visibleBadges.count < badges.count {
                 BadgeView(text: "...")
+                    .background(Capsule().fill(Color.gray))
             }
         }
         .frame(maxWidth: maxWidth, alignment: .leading)

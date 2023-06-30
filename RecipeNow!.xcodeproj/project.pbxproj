@@ -13,6 +13,7 @@
 		1A5DADF62A4E61130082AFF4 /* BadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5DADF52A4E61130082AFF4 /* BadgeView.swift */; };
 		1A5DADF82A4E65FA0082AFF4 /* BadgeContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5DADF72A4E65FA0082AFF4 /* BadgeContainerView.swift */; };
 		1A5DADFA2A4E68E80082AFF4 /* TextExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5DADF92A4E68E80082AFF4 /* TextExtension.swift */; };
+		1A5DADFD2A4F28D00082AFF4 /* YouTubePlayerKit in Frameworks */ = {isa = PBXBuildFile; productRef = 1A5DADFC2A4F28D00082AFF4 /* YouTubePlayerKit */; };
 		1A7CBF362A4B6A1400D7E38B /* RecipeNow_App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7CBF352A4B6A1400D7E38B /* RecipeNow_App.swift */; };
 		1A7CBF3A2A4B6A1500D7E38B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A7CBF392A4B6A1500D7E38B /* Assets.xcassets */; };
 		1A7CBF3E2A4B6A1500D7E38B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A7CBF3D2A4B6A1500D7E38B /* Preview Assets.xcassets */; };
@@ -84,6 +85,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A5DADFD2A4F28D00082AFF4 /* YouTubePlayerKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,6 +283,9 @@
 			dependencies = (
 			);
 			name = "RecipeNow!";
+			packageProductDependencies = (
+				1A5DADFC2A4F28D00082AFF4 /* YouTubePlayerKit */,
+			);
 			productName = "RecipeNow!";
 			productReference = 1A7CBF322A4B6A1400D7E38B /* RecipeNow!.app */;
 			productType = "com.apple.product-type.application";
@@ -353,6 +358,9 @@
 				Base,
 			);
 			mainGroup = 1A7CBF292A4B6A1400D7E38B;
+			packageReferences = (
+				1A5DADFB2A4F28D00082AFF4 /* XCRemoteSwiftPackageReference "YouTubePlayerKit" */,
+			);
 			productRefGroup = 1A7CBF332A4B6A1400D7E38B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -764,6 +772,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1A5DADFB2A4F28D00082AFF4 /* XCRemoteSwiftPackageReference "YouTubePlayerKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SvenTiigi/YouTubePlayerKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1A5DADFC2A4F28D00082AFF4 /* YouTubePlayerKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1A5DADFB2A4F28D00082AFF4 /* XCRemoteSwiftPackageReference "YouTubePlayerKit" */;
+			productName = YouTubePlayerKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 1A7CBF2A2A4B6A1400D7E38B /* Project object */;
 }
