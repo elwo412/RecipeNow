@@ -11,9 +11,9 @@ struct RecipeBook {
     var categories: [RecipeCategory]
     
     init() {
-        let dessertCategory = RecipeCategory(title: "Desserts", imageName: "photo", desc: "goodness", recipes: [])
-        let entreeCategory = RecipeCategory(title: "Entrées", imageName: "photo", desc: "please don't click", recipes: [])
-        let customCategory = RecipeCategory(title: "My Recipes", imageName: "photo", desc: "don't click, seriously", recipes: [])
+        let dessertCategory = RecipeCategory(title: "Desserts", imageName: "photo", desc: "Great dessert picks", queryName: "Dessert", recipes: [])
+        let entreeCategory = RecipeCategory(title: "Entrées", imageName: "photo", desc: "Please don't click", queryName: "None", recipes: [])
+        let customCategory = RecipeCategory(title: "My Recipes", imageName: "photo", desc: "Don't click, seriously", queryName: "None", recipes: [])
 
         categories = [dessertCategory, entreeCategory, customCategory]
     }
@@ -24,6 +24,7 @@ struct RecipeCategory: Identifiable {
     let title: String
     let imageName: String
     let desc: String
+    let queryName: String
     
     var recipes: [Recipe]
 }

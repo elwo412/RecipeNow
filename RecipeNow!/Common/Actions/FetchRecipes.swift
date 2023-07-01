@@ -8,8 +8,7 @@
 import Foundation
 
 func fetchRecipes(foodType: String) async throws -> [Recipe] {
-    let foodTypee = "Dessert" //for now
-    let url = URL(string: "https://themealdb.com/api/json/v1/1/filter.php?c=\(foodTypee)")! //for now 
+    let url = URL(string: "https://themealdb.com/api/json/v1/1/filter.php?c=\(foodType)")! //for now 
     
     let (data, _) = try await URLSession.shared.data(from: url)
     

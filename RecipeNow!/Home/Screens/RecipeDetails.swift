@@ -143,7 +143,7 @@ struct RecipeDetails_Preview: PreviewProvider {
         let testrec = Recipe(idMeal: "52923", strMeal: "Apple", strMealThumb: "https://www.themealdb.com/images/media/meals/adxcbq1619787919.jpg")
         let testrec2 = Recipe(idMeal: "1", strMeal: "Cake", strMealThumb: "https://www.themealdb.com/images/media/meals/adxcbq1619787919.jpg")
         let testrec3 = Recipe(idMeal: "2", strMeal: "Christmas Pudding Trifle", strMealThumb: "https://www.themealdb.com/images/media/meals/adxcbq1619787919.jpg")
-        let testCat = RecipeCategory(title: "Test", imageName: "photo", desc: "test", recipes: [testrec, testrec2, testrec3])
+        let testCat = RecipeCategory(title: "Test", imageName: "photo", desc: "test", queryName: "Dessert", recipes: [testrec, testrec2, testrec3])
         RecipesScreen(recipeCategory: testCat)
             .sheet(item: .constant(testrec)) { recipe in
                 RecipeDetails(recipeDetailsVM: RecipeDetailsViewModel(recipe: recipe))

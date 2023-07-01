@@ -10,8 +10,10 @@ import SwiftUI
 
 class RecipesViewModel: ObservableObject {
     let gridItems: [GridItem]
+    @Published var isLoading: Bool
     
     init() {
         gridItems = [GridItem(.flexible()), GridItem(.flexible())]
+        isLoading = true
     }
 }

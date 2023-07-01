@@ -19,32 +19,41 @@ struct RecipesScreen: View {
     var body: some View {
         TopActionBar(title: recipeCategory.title){
             VStack {
-                ScrollView {
-                    LazyVGrid(columns: recipesVM.gridItems) {
-                        ForEach(recipeCategory.recipes) { recipe in
-                            RecipeCardView(recipe: recipe, selectedRecipe: $selectedRecipe, isEA: $isExpandAllowed)
+                if (recipeCategory.recipes.count > 0 || recipesVM.isLoading) {
+                    ScrollView {
+                        LazyVGrid(columns: recipesVM.gridItems) {
+                            ForEach(recipeCategory.recipes) { recipe in
+                                RecipeCardView(recipe: recipe, selectedRecipe: $selectedRecipe, isEA: $isExpandAllowed)
+                            }
                         }
+                        .padding(.top, 75)
                     }
-                    .padding(.top, 75)
+                    .sheet(item: $selectedRecipe, onDismiss: didDismiss) { recipe in
+                        RecipeDetails(recipeDetailsVM: RecipeDetailsViewModel(recipe: recipe))
+                            .padding(.top, 25)
+                            .presentationDetents([.fraction(0.4), .fraction(1)])
+                    }
+                    .padding(.top, 50)
+                    .padding(.horizontal)
+                } else {
+                    Text("No Recipes Currently :(")
                 }
-                .sheet(item: $selectedRecipe, onDismiss: didDismiss) { recipe in
-                    RecipeDetails(recipeDetailsVM: RecipeDetailsViewModel(recipe: recipe))
-                        .padding(.top, 25)
-                        .presentationDetents([.fraction(0.4), .fraction(1)])
-                } 
-                .padding(.top, 50)
-                .padding(.horizontal)
             }
         }
         .onAppear() {
+            recipesVM.isLoading = true
             Task {
                 do {
-                    let recipes = try await fetchRecipes(foodType: recipeCategory.title)
+                    let recipes = try await fetchRecipes(foodType: recipeCategory.queryName)
                     withAnimation(.easeIn){
                         recipeCategory.recipes = recipes
                     }
                 } catch {
                     print("Failed to fetch recipes: \(error)")
+                }
+                withAnimation(.easeIn)
+                {
+                    recipesVM.isLoading = false
                 }
 
             }
@@ -62,7 +71,7 @@ struct Recipes_Preview: PreviewProvider {
         let testrec = Recipe(idMeal: "0", strMeal: "Apple & Blackberry Crumble", strMealThumb: "https://www.themealdb.com/images/media/meals/adxcbq1619787919.jpg")
         let testrec2 = Recipe(idMeal: "1", strMeal: "Cake", strMealThumb: "https://www.themealdb.com/images/media/meals/adxcbq1619787919.jpg")
         let testrec3 = Recipe(idMeal: "2", strMeal: "Christmas Pudding Trifle", strMealThumb: "https://www.themealdb.com/images/media/meals/adxcbq1619787919.jpg")
-        let testCat = RecipeCategory(title: "Test", imageName: "photo", desc: "test", recipes: [testrec, testrec2, testrec3])
+        let testCat = RecipeCategory(title: "Test", imageName: "photo", desc: "test", queryName: "Dessert", recipes: [testrec, testrec2, testrec3])
         RecipesScreen(recipeCategory: testCat)
     }
 }
